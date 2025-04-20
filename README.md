@@ -1,5 +1,6 @@
 <div align="center">
-  <h1><strong>News Article Summarizer</strong></h1>
+  <h1><strong>News Article Summarizer
+    (Mahakumbh Festival)</strong></h1>
 </div>
 This project automatically generates summaries of Indian news articles about the Mahakumbh by following three main steps:
 
