@@ -99,3 +99,59 @@ These metrics help quantify how close the generated summaries are to the human-w
 
 ## 📁 Project Structure
 
+News-Article-Summarizer/
+│
+├── README.md # Project overview, tasks, contributors, and instructions
+├── mahakumbh_articles.csv # Raw dataset scraped from Indian Express (title, date, summary)
+├── outputT5_fixed.csv # Final generated summaries saved after model inference
+│
+├── scraping_script.py # Web scraping logic using Selenium and BeautifulSoup
+├── preprocessing.py # Text cleaning, annotation creation, and data formatting
+├── model_training.py # Training pipeline using T5-base and Hugging Face Transformers
+│
+├── requirements.txt # List of required libraries and dependencies
+│
+├── utils/
+│ ├── clean_text.py # Text normalization and cleaning helper
+│ ├── summary_generation.py # Script to generate summaries using the trained model
+│
+└── notebooks/
+├── scraping_demo.ipynb # Optional notebook to run the scraping process
+├── training_pipeline.ipynb # Model training and evaluation in interactive format
+└── inference.ipynb # Notebook to test and generate summaries interactively
+
+
+## 🧩 Description of Key Components
+
+- **`scraping_script.py`**  
+  Scrapes Mahakumbh-related articles from The Indian Express using headless Chrome with Selenium and parses HTML using BeautifulSoup.
+
+- **`preprocessing.py`**  
+  Cleans scraped text, merges titles and summaries into article bodies, and formats them for training.
+
+- **`model_training.py`**  
+  Fine-tunes the T5-base model using Hugging Face's `Seq2SeqTrainer`, logs ROUGE scores, and saves final model and outputs.
+
+- **`utils/`**  
+  Contains modular helper scripts:
+  - `clean_text.py`: Removes noisy characters and formats strings
+  - `summary_generation.py`: Loads the trained model to generate abstractive summaries
+
+- **`notebooks/`**  
+  Contains Jupyter notebooks for experimentation, visualization, and testing the summarizer in an interactive way.
+
+- **`mahakumbh_articles.csv`**  
+  Output of the scraping and preprocessing pipeline. Contains article titles, publication dates, and original summaries.
+
+- **`outputT5_fixed.csv`**  
+  Contains final generated summaries by the model along with their source articles.
+
+---
+
+Let me know if you’d like me to generate:
+- A `requirements.txt` file  
+- The `.py` files mentioned above  
+- A zip of this entire folder structure
+
+I can create a full-ready project scaffold for GitHub if needed!
+
