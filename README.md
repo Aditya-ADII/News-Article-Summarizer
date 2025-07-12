@@ -148,10 +148,5 @@ News-Article-Summarizer/
 
 ---
 
-Let me know if you’d like me to generate:
-- A `requirements.txt` file  
-- The `.py` files mentioned above  
-- A zip of this entire folder structure
 
-I can create a full-ready project scaffold for GitHub if needed!
 
