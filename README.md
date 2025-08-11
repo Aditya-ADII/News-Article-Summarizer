@@ -1,4 +1,6 @@
-# News Article Summarizer: Mahakumbh Festival
+<div align="center">
+  <p><em># News Article Summarizer: Mahakumbh Festival</em></p>
+</div>
 
 <div align="center">
   <p><em>Automated Abstractive Summarization of Indian News Coverage Using T5 Transformers</em></p>
@@ -97,9 +99,9 @@ News-Article-Summarizer/
 ├── LICENSE                    # Project license
 ├── README.md                  # Project overview, tasks, contributors, and setup instructions
 └── Main/
-├── mahakumbh_articles.csv # Raw scraped dataset (titles, dates, summaries)
-├── main.ipynb             # Main Colab notebook containing the entire pipeline (scraping, preprocessing, training, evaluation, and inference)
-└── outputT5_fixed.csv     # Generated summaries from model inference
+  ├── mahakumbh_articles.csv # Raw scraped dataset (titles, dates, summaries)
+  ├── main.ipynb             # Main Colab notebook containing the entire pipeline (scraping, preprocessing, training, evaluation, and inference)
+  └── outputT5_fixed.csv     # Generated summaries from model inference
 ```
 ---
 
