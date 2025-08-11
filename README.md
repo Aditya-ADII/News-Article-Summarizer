@@ -1,152 +1,129 @@
+# News Article Summarizer: Mahakumbh Festival
+
 <div align="center">
-  <h1><strong>📰 News Article Summarizer<br>(Mahakumbh Festival)</strong></h1>
-  <p><em>Automated abstractive summarization of Indian news coverage using T5 Transformers</em></p>
+  <p><em>Automated Abstractive Summarization of Indian News Coverage Using T5 Transformers</em></p>
 </div>
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
-This project focuses on the **automated summarization** of news articles related to the **Mahakumbh Festival**, one of the largest religious gatherings in the world. The goal is to condense long news articles into concise, meaningful summaries using **state-of-the-art NLP techniques**.
+This project develops an automated system for summarizing news articles about the **Mahakumbh Festival**, one of the world's largest religious gatherings. By leveraging state-of-the-art natural language processing (NLP) techniques, the system condenses lengthy articles into concise, informative summaries.
 
-The pipeline includes:
-- **Data scraping** from Indian news sources
-- **Cleaning and preprocessing** text
-- **Training a transformer-based model (T5)** for summarization
-- **Evaluating** performance using industry-standard metrics like ROUGE
+The end-to-end pipeline, implemented in a Google Colab notebook, includes:
+- **Data Scraping**: Collecting articles from Indian news sources.
+- **Text Preprocessing**: Cleaning and preparing the data.
+- **Model Training**: Fine-tuning a T5 transformer model for abstractive summarization.
+- **Evaluation**: Assessing performance with metrics such as ROUGE scores.
 
----
-
-## 🧭 Motivation
-
-In the era of information overload, it's crucial to extract relevant content quickly. Manually summarizing articles is time-consuming, especially for large datasets. This project demonstrates how **abstractive summarization** using deep learning can help automate this process with high-quality results. We chose the **Mahakumbh Festival** due to its cultural relevance and rich media coverage in India.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Aditya-ADII/News-Article-Summarizer/blob/main/Main/main.ipynb)
 
 ---
 
-## ✅ Task Breakdown
+## Motivation
 
-### 🔹 Task 1: Dataset Collection
-- **Source:** Articles were scraped from *The Indian Express* website.
-- **Tools Used:**  
-  - [`Selenium`](https://www.selenium.dev/) for dynamic browser automation  
-  - [`BeautifulSoup`](https://www.crummy.com/software/BeautifulSoup/) for parsing HTML and extracting content
-- **Output:** Extracted article titles, dates, and summaries; saved as structured data in `mahakumbh_articles.csv`.
+In today's information-saturated world, quickly extracting key insights from news articles is essential. Manual summarization is labor-intensive, particularly for large volumes of content. This project showcases how deep learning-based abstractive summarization can automate the process efficiently while maintaining high quality. The Mahakumbh Festival was selected as the focus due to its cultural significance in India and the abundance of related media coverage.
 
 ---
 
-### 🔹 Task 2: Dataset Annotation
-- **Text Cleaning:** Removed noisy HTML elements, fixed encoding issues, and normalized text.
-- **Data Preparation:** Combined article titles and content for model input. The corresponding original summaries served as ground truth labels.
-- **Annotation Format:**  
-  - `Input`: Cleaned title + article content  
-  - `Target`: Official article summary
+## Task Breakdown
+
+### Task 1: Dataset Collection
+- **Sources**: Articles scraped from *The Indian Express* website.
+- **Tools Used**:
+  - [Selenium](https://www.selenium.dev/) for dynamic browser automation.
+  - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/) for HTML parsing and content extraction.
+- **Output**: Structured dataset containing article titles, dates, and summaries, saved as `mahakumbh_articles.csv`.
+
+### Task 2: Dataset Preparation
+- **Text Cleaning**: Removed HTML artifacts, resolved encoding issues, and normalized text.
+- **Data Formatting**: Combined article titles and content as input; used original summaries as ground-truth targets.
+- **Annotation Format**:
+  - **Input**: Cleaned title + article body.
+  - **Target**: Official summary.
+
+### Task 3: Model Development and Summarization
+#### Model Architecture
+- **Base Model**: [T5-base](https://huggingface.co/t5-base), an encoder-decoder transformer optimized for sequence-to-sequence tasks.
+- **Framework**: [Hugging Face Transformers](https://huggingface.co/transformers/) with `Seq2SeqTrainer` for training and evaluation.
+
+#### Pipeline
+- Tokenized the dataset and split it into training and validation sets.
+- Fine-tuned the model on GPU for abstractive summarization.
+- Monitored key metrics:
+  - Training and validation loss.
+  - ROUGE scores (ROUGE-1, ROUGE-2, ROUGE-L).
+
+#### Output
+- Generated summaries for unseen articles.
+- Results exported to `outputT5_fixed.csv`.
 
 ---
 
-### 🔹 Task 3: Model Development & Summarization
+## Evaluation Metrics
 
-#### 🧠 Model
-- **Architecture:** [T5-base](https://huggingface.co/t5-base) – a powerful encoder-decoder model for sequence-to-sequence tasks.
-- **Framework:** [Hugging Face Transformers](https://huggingface.co/transformers/) and `Seq2SeqTrainer` for training and evaluation.
+The model's performance was evaluated using **ROUGE** scores, which measure the overlap between generated and reference summaries:
+- **ROUGE-1**: Unigram overlap (focuses on individual words).
+- **ROUGE-2**: Bigram overlap (captures phrase-level similarity).
+- **ROUGE-L**: Longest common subsequence (assesses sentence structure preservation).
 
-#### ⚙️ Pipeline
-- Tokenized and split dataset into training and validation sets.
-- Trained the model on news data using GPU-accelerated fine-tuning.
-- Tracked:
-  - **Training Loss**
-  - **Validation Loss**
-  - **ROUGE Scores** (ROUGE-1, ROUGE-2, ROUGE-L)
-
-#### 📤 Output
-- Generated abstractive summaries for unseen inputs.
-- Final results saved to `outputT5_fixed.csv`.
+These metrics provide a quantitative assessment of summary quality and fidelity to the original content.
 
 ---
 
-## 📈 Evaluation Metrics
-
-Used **ROUGE** scores to evaluate the quality of generated summaries:
-- **ROUGE-1**: Overlap of unigrams
-- **ROUGE-2**: Overlap of bigrams
-- **ROUGE-L**: Longest common subsequence
-
-These metrics help quantify how close the generated summaries are to the human-written ones.
-
----
-
-## 🧑‍💻 Contributors & Work Distribution
+## Contributors and Work Distribution
 
 | Name                      | Roll No.   | Contribution                                                                 |
 |---------------------------|------------|------------------------------------------------------------------------------|
-| **Aditya Vilasrao Bhagat** | 2411AI27   | Scraped and collected article data using Selenium and BeautifulSoup. Handled preprocessing and structured storage of the dataset. |
-| **Divyanshu Singh**        | 2411AI41   | Led model development: implemented tokenization, prepared data pipeline, set up training and validation. |
-| **Vaibhav Shikhar Singh**  | 2411AI48   | Focused on training and evaluation. Handled ROUGE scoring and performance tracking of the model. |
+| **Aditya Vilasrao Bhagat** | 2411AI27   | Led data scraping using Selenium and BeautifulSoup; handled preprocessing and dataset storage. |
+| **Divyanshu Singh**        | 2411AI41   | Managed model development, including tokenization, data pipeline setup, and training/validation configuration. |
+| **Vaibhav Shikhar Singh**  | 2411AI48   | Oversaw model training, evaluation, ROUGE scoring, and performance analysis. |
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Languages:** Python  
-- **Libraries & Tools:**  
-  - `Selenium` – Web scraping  
-  - `BeautifulSoup` – HTML parsing  
-  - `Pandas`, `Numpy` – Data handling  
-  - `Transformers`, `Datasets` – Hugging Face NLP models  
-  - `Seq2SeqTrainer` – For training T5  
-  - `scikit-learn`, `ROUGE` – Model evaluation
+- **Programming Language**: Python.
+- **Key Libraries and Tools**:
+  - **Web Scraping**: Selenium, BeautifulSoup.
+  - **Data Handling**: Pandas, NumPy.
+  - **NLP and Modeling**: Hugging Face Transformers, Datasets, Seq2SeqTrainer.
+  - **Evaluation**: scikit-learn, ROUGE.
 
 ---
-
-## 📁 Project Structure
-
+## Project Structure
+```
 News-Article-Summarizer/
-│
-├── README.md # Project overview, tasks, contributors, and instructions
-├── mahakumbh_articles.csv # Raw dataset scraped from Indian Express (title, date, summary)
-├── outputT5_fixed.csv # Final generated summaries saved after model inference
-│
-├── scraping_script.py # Web scraping logic using Selenium and BeautifulSoup
-├── preprocessing.py # Text cleaning, annotation creation, and data formatting
-├── model_training.py # Training pipeline using T5-base and Hugging Face Transformers
-│
-├── requirements.txt # List of required libraries and dependencies
-│
-├── utils/
-│ ├── clean_text.py # Text normalization and cleaning helper
-│ ├── summary_generation.py # Script to generate summaries using the trained model
-│
-└── notebooks/
-├── scraping_demo.ipynb # Optional notebook to run the scraping process
-├── training_pipeline.ipynb # Model training and evaluation in interactive format
-└── inference.ipynb # Notebook to test and generate summaries interactively
+├── LICENSE                    # Project license
+├── README.md                  # Project overview, tasks, contributors, and setup instructions
+└── Main/
+├── mahakumbh_articles.csv # Raw scraped dataset (titles, dates, summaries)
+├── main.ipynb             # Main Colab notebook containing the entire pipeline (scraping, preprocessing, training, evaluation, and inference)
+└── outputT5_fixed.csv     # Generated summaries from model inference
+```
+---
 
+## Description of Key Components
 
-## 🧩 Description of Key Components
+- **`main.ipynb`**: This Google Colab notebook encapsulates the complete project workflow. It includes sections for:
+  - Web scraping using Selenium and BeautifulSoup to collect Mahakumbh-related articles from The Indian Express.
+  - Text cleaning, normalization, and preparation of input-target pairs for training.
+  - Fine-tuning the T5-base model with Hugging Face's `Seq2SeqTrainer`, including tokenization, training, evaluation with ROUGE scores, and summary generation.
+  - Helper functions for text cleaning and summary generation are defined inline.
 
-- **`scraping_script.py`**  
-  Scrapes Mahakumbh-related articles from The Indian Express using headless Chrome with Selenium and parses HTML using BeautifulSoup.
+- **`mahakumbh_articles.csv`**: Contains the scraped data, including article titles, publication dates, and original summaries.
 
-- **`preprocessing.py`**  
-  Cleans scraped text, merges titles and summaries into article bodies, and formats them for training.
+- **`outputT5_fixed.csv`**: Stores the model-generated abstractive summaries alongside the source articles for easy comparison.
 
-- **`model_training.py`**  
-  Fine-tunes the T5-base model using Hugging Face's `Seq2SeqTrainer`, logs ROUGE scores, and saves final model and outputs.
-
-- **`utils/`**  
-  Contains modular helper scripts:
-  - `clean_text.py`: Removes noisy characters and formats strings
-  - `summary_generation.py`: Loads the trained model to generate abstractive summaries
-
-- **`notebooks/`**  
-  Contains Jupyter notebooks for experimentation, visualization, and testing the summarizer in an interactive way.
-
-- **`mahakumbh_articles.csv`**  
-  Output of the scraping and preprocessing pipeline. Contains article titles, publication dates, and original summaries.
-
-- **`outputT5_fixed.csv`**  
-  Contains final generated summaries by the model along with their source articles.
+To run the project:
+1. Open `main.ipynb` in Google Colab (use the badge above).
+2. Install dependencies as listed in the notebook (e.g., via `!pip install` commands).
+3. Execute the cells sequentially to scrape data, train the model, and generate summaries.
 
 ---
 
+## License
 
+This project is licensed under the terms specified in the `LICENSE` file.
 
+---
