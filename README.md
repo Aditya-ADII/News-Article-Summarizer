@@ -1,8 +1,4 @@
-<div align="center">
-  <p><em># News Article Summarizer: Mahakumbh Festival</em></p>
-</div>
-
-<div align="center">
+<h1><strong>News Article Summarizer: Mahakumbh Festival</strong></h1>
   <p><em>Automated Abstractive Summarization of Indian News Coverage Using T5 Transformers</em></p>
 </div>
 
