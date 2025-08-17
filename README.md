@@ -2,6 +2,8 @@
   <p><em>Automated Abstractive Summarization of Indian News Coverage Using T5 Transformers</em></p>
 </div>
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Aditya-ADII/News-Article-Summarizer/blob/main/Main/main.ipynb)
+
 ---
 
 ## Project Overview
@@ -13,8 +15,6 @@ The end-to-end pipeline, implemented in a Google Colab notebook, includes:
 - **Text Preprocessing**: Cleaning and preparing the data.
 - **Model Training**: Fine-tuning a T5 transformer model for abstractive summarization.
 - **Evaluation**: Assessing performance with metrics such as ROUGE scores.
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Aditya-ADII/News-Article-Summarizer/blob/main/Main/main.ipynb)
 
 ---
 
